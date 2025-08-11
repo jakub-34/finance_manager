@@ -40,6 +40,16 @@ public class TransactionController {
         transactionService.deleteTransaction(id);
     }
 
+    @DeleteMapping
+    public void deleteTransactions(@RequestBody List<Long> ids) {
+        transactionService.deleteTransactions(ids);
+    }
+
+    @DeleteMapping("/month/{year}/{month}")
+    public void deleteTransactionsByMonth(@PathVariable int year, @PathVariable int month) {
+        transactionService.deleteTransactionsByMonth(year, month);
+    }
+
     @GetMapping("/type/{type}")
     public List<Transaction> getTransactionsByType(@PathVariable String type) {
         return transactionService.getTransactionsByType(type);
